@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": "C:/Users/legion/Desktop/requirement-tracker/dist/server",
+    "rootDir": "C:/Users/legion/Desktop/requirement-tracker/server",
+    "resolveJsonModule": true
+  },
+  "include": ["C:/Users/legion/Desktop/requirement-tracker/server/**/*.ts"],
+  "exclude": ["C:/Users/legion/Desktop/requirement-tracker/node_modules"]
+}

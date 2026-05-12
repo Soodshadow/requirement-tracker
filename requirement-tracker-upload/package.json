@@ -1,0 +1,73 @@
+{
+  "name": "requirement-tracker",
+  "version": "1.0.0",
+  "description": "跨部门需求拆解与全流程追踪Agent系统",
+  "main": "dist/main/main.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:vite\" \"npm run dev:electron\"",
+    "dev:vite": "vite",
+    "dev:electron": "npm run build:server && tsc -p tsconfig.main.json && electron .",
+    "build": "npm run build:vite && npm run build:electron && npm run build:server",
+    "build:vite": "vite build",
+    "build:electron": "node node_modules/typescript/bin/tsc -p tsconfig.main.json",
+    "build:server": "node node_modules/typescript/bin/tsc -p server/tsconfig.json",
+    "build:main": "node node_modules/typescript/bin/tsc -p tsconfig.main.json",
+    "dev:vite": "node node_modules/vite/bin/vite.js",
+    "package": "npm run build && electron-builder",
+    "package:zip": "npm run build && electron-builder --win zip"
+  },
+  "dependencies": {
+    "better-sqlite3": "^9.4.3",
+    "cors": "^2.8.5",
+    "electron-log": "^5.1.1",
+    "express": "^4.18.2",
+    "uuid": "^9.0.1",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.9",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.19",
+    "@types/react": "^18.2.56",
+    "@types/react-dom": "^18.2.19",
+    "@types/uuid": "^9.0.8",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.17",
+    "concurrently": "^8.2.2",
+    "electron": "^28.2.3",
+    "electron-builder": "^24.13.3",
+    "postcss": "^8.4.35",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.1",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.4"
+  },
+  "build": {
+    "appId": "com.requirement-tracker.app",
+    "productName": "需求追踪系统",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "server",
+        "to": "server"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "zip",
+          "arch": ["x64"]
+        }
+      ]
+    }
+  }
+}
